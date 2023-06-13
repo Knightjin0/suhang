@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+
+{% block mid %}
+<div class="card-body">
+  <form method="post" action="/myPage/{{user.id}}/cartProcess">
+    <table class="table table-striped">
+      <tr><td>제목</td><td>{{ product.name }}</td></tr>
+      <tr><td>등록일</td><td>{{ product.registrationDate }}</td></tr>
+      <tr><td>닉네임</td><td>{{ product.seller }}</td></tr>
+      <tr><td>내용</td><td><img style="width: 100px;" src='/static/{{product.img}}'><br>{{ product.quantity }}</td></tr>
+      
+      
+    </table>
+    {% if user %}
+    <input type="hidden" name="productID" value="{{product.idproducts}}">
+    <label class="m-2">수량 :</label><input name="quantity" type="number" min="1" value="1">
+    <button type="submit" class ="btn btn-primary">장바구니</button>
+    {% endif %}
+  </form>
+</div>
+{% endblock %}
